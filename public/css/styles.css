@@ -1,0 +1,230 @@
+
+/* Formulario login */
+.login-reg{
+    margin: 0;
+    background-color: white;
+    width: 30%;
+    height: 65%;
+    font-size: 20px;
+    text-align: center;
+    min-height: 250px;
+    border: 1px solid #ccc;
+    border-radius: 65px;
+    position: absolute;
+    left: 35%;
+    top: 15%;
+    display: none;
+    
+}
+/* Formulario registro proveedor */
+#div-form-proveedor{
+  margin: 0;
+  background-color: white;
+  width: 30%;
+  height: 82%;
+  font-size: 20px;
+  text-align: center;
+  min-height: 250px;
+  border: 1px solid #ccc;
+  border-radius: 65px;
+  position: absolute;
+  left: 35%;
+  top: 15%;
+  display: none; 
+  
+}
+/* Contenedor tipo de registro */
+.tipo-reg{
+  color: #3c3c42;;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0px auto;
+  background-color: white;
+  width: 40%;
+  height: 50%;
+  font-size: 20px;
+  text-align: center;
+  min-height: 250px;
+  border: 1px solid #ccc;
+  border-radius: 65px;
+  position: absolute;
+  left: 30%;
+  top: 15%;
+  display: none;
+   
+}
+
+
+/* Fecha de nacimiento */
+.lbl-date {
+  display: block;
+  font: 1rem 'Fira Sans', sans-serif;
+  font-size: 15px;
+}
+
+.input-date,
+.lbl-date {
+  margin: .4rem 0;
+}
+
+/* Categorias de servicio */
+.selct-options{
+font-size: 15px;
+}
+
+.cerrar-form{
+    position: absolute;
+    right: 40px;
+    top: 1px;
+}
+.form-login{
+    color: #3c3c42;;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px auto;
+}
+.form-login input{
+    width: 70%;
+    font-size: 15px;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+}
+
+.opciones-login input{
+    background-color: white;
+    border-color: transparent;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.titulo{
+    font-family: 'Lobster', cursive;
+}
+
+.link-access{
+    cursor: pointer;
+}
+
+
+
+.cerrar-ventana-tipo{
+    position: absolute;
+    right: 40px;
+    top: 1px;
+}
+
+.input-tipo{
+    width: 70%;
+    border-radius: 15px;
+    border: 2px solid #ccc;
+}
+
+
+/* Animation de degragado hacia bajo para abrir el formulario Login */
+.login-reg {
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  
+  @-webkit-keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+    }
+  }
+  
+  @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+    }
+  }
+
+  /* Animacion para abri la ventana de tipo de registro */
+  .tipo-reg {
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  
+  @-webkit-keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+    }
+  }
+  
+  @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+    }
+  }
+
+
+
+/* Animacion para mostrar el formulario del registro del proveedor */
+#div-form-proveedor{
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
