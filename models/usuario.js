@@ -58,6 +58,12 @@ const UsuarioSchema = Schema({
     },
 });
 
-// Exportar el modelo (<nombre coleccion>, <esquema creado>)
 
+// Metodos para sobre escribir metodos
+UsuarioSchema.methods.toJSON = function (){
+    const {password, __v, ...usuario} = this.toObject();
+    return usuario;
+}
+
+// Exportar el modelo (<nombre coleccion>, <esquema creado>)
 module.exports = model('Usuario', UsuarioSchema);

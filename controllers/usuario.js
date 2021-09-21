@@ -2,32 +2,59 @@ const {response, request} = require('express');
 const bcryptjs = require('bcryptjs');
 
 
-// Importar modelo del esquema usuario 
+// Importar modelo del esquema usuario (DB)
 const Usuario = require('../models/usuario');
 
-// Funciones para las rutas del usuario enviadas por HTTP
-const getUsuario = (req = request, res = response) => {
+// Funcion GET para obtener el usuario enviados por HTTP
+const getUsuario = async (req = request, res = response) => {
 
-    //Query params en la ruta de la URL
-    const query = req.query;
+    // Obtener Usuarios Activos
+    const [mostrarUsuariosActivos, totalUsuariosActivos] = await Promise.all([
+        //Obtener los usuarios de la base de datos
+        Usuario.find({estadoUsuario: true}),
+        // Obtener el total de usuarios en la base de datos
+        Usuario.countDocuments({estadoUsuario: true})
+    ]);
+
+    // Obtener Usuarios Inactivos
+    const [mostrarUsuariosInactivos, totalUsuariosInactivos] = await Promise.all([
+        //Obtener los usuarios de la base de datos
+        Usuario.find({estadoUsuario: false}),
+        // Obtener el total de usuarios en la base de datos
+        Usuario.countDocuments({estadoUsuario: false})
+    ]);
 
     res.json({
         msg: 'Obteniendo datos del usuario',
-        query,
+        mostrarUsuariosActivos,
+        totalUsuariosActivos,
+        mostrarUsuariosInactivos,
+        totalUsuariosInactivos
     });
 }
 
-const putUsuario = (req = request, res = response) => {
+// Funcion PUT para actualizar datos del usuario enviados por HTTP
+const putUsuario = async(req = request, res = response) => {
 
+    const {id} = req.params;
+    const {_id,password, correo, ...resto} = req.body;
 
-    const id = req.params.id;
+    // Validar si el id que que se manda es el mismo contra base de datos
+    if (password){
+        // Encriptar contrasenia
+    const salt = bcryptjs.genSaltSync(10);
+    resto.password = bcryptjs.hashSync(password, salt);
+    }
+
+    const infoUsuario = await Usuario.findByIdAndUpdate(id , resto);
 
     res.json({
-        msg: 'actualizando datos del usuario',
-        id
+        msg: 'Datos del usuario actualizados correctamente',
+        infoUsuario,
     });
 }
 
+// Funcion POST para crear usuarios enviados por HTTP
 const postUsuario = async(req = request, res = response) => {
 
     // Constante body que simula lo que recibe del formulario de registro
@@ -45,7 +72,7 @@ const postUsuario = async(req = request, res = response) => {
             img,
             rol,} = req.body;
     // Constante usuario almacena lo que recibe del formulario "body",
-    //new Usuario toma el modelo de la BD usuario.
+    //new Usuario toma el modelo del esquema de la BD usuario.
     const usuario = new Usuario({
         nombre,
         apellidoPaterno,
@@ -60,14 +87,6 @@ const postUsuario = async(req = request, res = response) => {
         img,
         rol});
 
-    // Verificar si el correo existe
-
-    const existeEmail = await Usuario.findOne({correo});
-    if (existeEmail){ 
-        return res.status(400).json({
-            msg:'Ese correo ya esta en uso'
-        }) 
-    }
 
     // Encriptar contrasenia
     const salt = bcryptjs.genSaltSync(10);
@@ -77,20 +96,30 @@ const postUsuario = async(req = request, res = response) => {
     await usuario.save();
 
     res.json({
-        msg: 'Datos del usuario guardados correctamente',
+        msg: 'Usuario creado correctamente',
        usuario,
     });
 }
 
-const deleteUsuario = (req = request, res = response) => {
+// Funciones para eliminar el usuario o datos del usuario por HTTP
+const deleteUsuario = async(req = request, res = response) => {
+
+    const {id} = req.params;
+    // Borrar el usuario completo (Funcion no recomendable)
+    //const eliminarUsuario = await Usuario.findByIdAndDelete(id)
+
+    //Desactivar cuenta de usuaurio (funcion recomendable) //Metodo para el ADMINISTRADOR
+    const desactivarCuenta =  await Usuario.findByIdAndUpdate(id, {estadoUsuario: false});
+
     res.json({
         msg: 'elimindando datos del usuario',
+        //eliminarUsuario
+        desactivarCuenta
     });
 }
 
 
 // Exportar controladores
-
 module.exports = {
     getUsuario,
     putUsuario,
