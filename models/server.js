@@ -14,6 +14,7 @@ class Server {
         
         // Rutas que tomara el metodo Routes
         this.rutaUsuario = '/api/usuario';
+        this.rutaServicio = '/api/servicio';
         
         
 
@@ -50,6 +51,7 @@ class Server {
         
         //Ruta cargar fichero de rutas del usuario
         this.app.use(this.rutaUsuario, require('../routes/usuario'));
+        this.app.use(this.rutaServicio, require('../routes/servicio'));
     }
 
     // Metodo para verificar si el servidor funciona
