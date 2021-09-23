@@ -43,7 +43,7 @@ class Server {
         this.app.use(express.json());
 
         // Carpeta o directorio public
-        this.app.use(express.static('public'));
+        this.app.use(express.static('public')); 
     }
 
     // Metodo para configurar Rutas

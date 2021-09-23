@@ -26,10 +26,11 @@ const ServicioSchema = Schema({
         default: true
     },
     fechaPublicacion: {
-        type: Date,  
+        type: Date,
+        default: Date.now   
     }, 
     precio: {
-        type: Double,
+        type: Number,
         required: [true, 'El precio del servicio es obligatorio'],
 
     },    
