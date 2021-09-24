@@ -1,20 +1,21 @@
-
 // Fichero para manejar las rutas de la pagina principal
-
 const {Router}  = require('express');
 const { check } = require('express-validator');
 
 
 // Importacion de funciones para las validacion de los datos desde middleware
 const { validarCampos } = require('../middlewares/validar-campos');
+const { validarJWT }    = require('../middlewares/validar-jwt');
+const { esAdminRol } = require('../middlewares/validar-roles');
+
 // Importacion de los metodos validaciones desde db-validator/ helpers
 const { esUnRolValido, existeEmail, existeUsuarioPorId } = require('../helpers/db-validators');
 
 // Importacion de metodos HTTP desde usaurio controllers
 const { getUsuario,
-    putUsuario,
-    postUsuario,
-    deleteUsuario,} = require('../controllers/usuario');
+        putUsuario,
+        postUsuario,
+        deleteUsuario,} = require('../controllers/usuario');
 
 // Inicializando la constante para fijar las rutas
 const rutas = Router();
@@ -30,9 +31,9 @@ const rutas = Router();
         // check('rol').custom(esUnRolValido),
         // Validaciones de campos del formulario tomando el fichero de la carpeta middleware
         validarCampos
-    ], putUsuario);
+     ], putUsuario);
 
-    // Obtener ruta para enviar datos del usuario
+    // Obtener ruta para registrar datos del usuario
     rutas.post('/', [
         // Validaciones de los campos por middlewares (utilizando express-validator)
         check('nombre', 'El nombre es obligatorio').not().isEmpty(),
@@ -49,14 +50,16 @@ const rutas = Router();
         check('rol').custom(esUnRolValido),
         // Validaciones de campos del formulario tomando el fichero de la carpeta middleware
         validarCampos
-    ],postUsuario);
+      ],postUsuario);
 
     // Obtener ruta para eliminar datos del usuario
     rutas.delete('/:id',[
+        validarJWT,
+        esAdminRol,
         check('id','No es un id valido').isMongoId(),
         check('id').custom(existeUsuarioPorId),
         validarCampos
-    ], deleteUsuario);
+    ],  deleteUsuario);
 
 
 

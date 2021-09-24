@@ -47,3 +47,11 @@ npm install vue
 `````````````````
 
 ************************************
+
+# CRUD DE USUARIOS LISTO
+***************************************
+Se creo todo el CRUD de los usuarios
+
+NOTA: SE HICIERON LAS PRUEBAS POR Postman 
+y Mongo Atlas.
+***************************************

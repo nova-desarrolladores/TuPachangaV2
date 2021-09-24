@@ -12,7 +12,6 @@ const validarCampos = (req, res, next) => {
 
 
 //Exportacion de modulos
-
 module.exports = {
     validarCampos,
 }

@@ -105,6 +105,8 @@ const postUsuario = async(req = request, res = response) => {
 const deleteUsuario = async(req = request, res = response) => {
 
     const {id} = req.params;
+
+
     // Borrar el usuario completo (Funcion no recomendable)
     //const eliminarUsuario = await Usuario.findByIdAndDelete(id)
 
@@ -114,7 +116,8 @@ const deleteUsuario = async(req = request, res = response) => {
     res.json({
         msg: 'elimindando datos del usuario',
         //eliminarUsuario
-        desactivarCuenta
+        desactivarCuenta,
+        
     });
 }
 

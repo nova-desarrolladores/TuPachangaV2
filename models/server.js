@@ -1,7 +1,8 @@
-
 // Paquetes o librerias de terceros
 const express = require('express');
-const cors= require('cors');
+const cors    = require('cors');
+
+
 // Importacion  de la conexion a la base de datos
 const {dbConnection} = require('../database/config');
 
@@ -14,8 +15,8 @@ class Server {
         
         // Rutas que tomara el metodo Routes
         this.rutaUsuario = '/api/usuario';
-        
-        
+        this.pathAuthLogin = '/api/auth';
+       
 
     /*Llamada de metodos de la clase Server */  
         // Metodo que conecta a la Base de datos
@@ -50,6 +51,7 @@ class Server {
         
         //Ruta cargar fichero de rutas del usuario
         this.app.use(this.rutaUsuario, require('../routes/usuario'));
+        this.app.use(this.pathAuthLogin, require('../routes/auth-login'));
     }
 
     // Metodo para verificar si el servidor funciona
