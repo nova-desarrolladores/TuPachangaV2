@@ -6,26 +6,34 @@ const Servicio = require('../models/servicio');
 // Funcion GET para obtener el servicio por HTTP
 const getServicio = async (req = request, res = response) => {    
 
+    const {name} = req.query;
+
     res.json({
         msg: 'get servicio',
+        name
         
     });
 }
 
 // Funcion PUT para actualizar datos del servicio enviados por HTTP
 const putServicio = async(req = request, res = response) => {
+    
+    const {id} = req.params;
     res.json({
         msg: 'put servicio',
-        
+        id    
+         
     });
 }
 
 // Funcion POST para crear servicios enviados por HTTP
 const postServicio = async(req = request, res = response) => {    
 
+    const {nombre} = req.body;
     res.json({
         msg: 'post servicio',
-       
+        nombre
+         
     });
 }
 

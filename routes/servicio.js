@@ -26,7 +26,7 @@ const rutasServicio = Router();
     rutasServicio.get('/', getServicio);
 
     // Obtener ruta para actualizar datos del servicio 
-    rutasServicio.put('/',putServicio);
+    rutasServicio.put('/:id',putServicio);
 
     // Obtener ruta para enviar datos del servicio
     rutasServicio.post('/', postServicio);
