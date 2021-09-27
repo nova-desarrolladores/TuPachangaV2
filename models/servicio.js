@@ -15,11 +15,11 @@ const ServicioSchema = Schema({
         type: String,
         required: [true, 'El tipo de servicio es obligatorio'],  
     },
-    imagenServicio: {
-        type: String,
-    },
+    // imagenServicio: {
+    //     type: String,
+    // },
     galeriaImagen: {
-        type: String,
+        type: [String],
     },
     estadoServicio:{
         type: Boolean,

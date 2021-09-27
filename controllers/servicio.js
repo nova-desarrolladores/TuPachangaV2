@@ -29,10 +29,15 @@ const putServicio = async(req = request, res = response) => {
 // Funcion POST para crear servicios enviados por HTTP
 const postServicio = async(req = request, res = response) => {    
 
-    const {nombre} = req.body;
+    //const {nombre} = req.body;
+    const body = req.body;
+    const servicio = new Servicio (body);
+
+    await servicio.save();
+
     res.json({
         msg: 'post servicio',
-        nombre
+        servicio
          
     });
 }
