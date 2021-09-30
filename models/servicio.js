@@ -16,9 +16,9 @@ const ServicioSchema = Schema({
         ref:'Categoria'
         //required: [true, 'La categoria de servicio es obligatorio'],  
     },
-    // imagenServicio: {
-    //     type: String,
-    // },
+    imagenServicio: {
+        type: String,
+    },
     galeriaImagen: {
         type: [String],
     },
