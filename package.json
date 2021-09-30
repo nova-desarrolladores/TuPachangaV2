@@ -1,3 +1,30 @@
+
+{
+  "name": "tupachanga",
+  "version": "1.0.0",
+  "description": "Sistema SISRESERVES ",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon models/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nova Desarrolladores",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-multiparty": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.12.1",
+    "mongoose": "^5.11.15",
+    "validator": "^13.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.11"
+  }
+}
+
 {
   "name": "tupachanga",
   "version": "1.0.0",
@@ -24,3 +51,4 @@
     "nodemon": "^2.0.11"
   }
 }
+
