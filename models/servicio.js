@@ -11,9 +11,10 @@ const ServicioSchema = Schema({
         type: String,
         required: [true, 'La descripción del servicio es obligatoria'],  
     },
-    tipoServicio: {
-        type: String,
-        required: [true, 'El tipo de servicio es obligatorio'],  
+    categoria: {
+        type: Schema.Types.ObjectId,
+        ref:'Categoria'
+        //required: [true, 'La categoria de servicio es obligatorio'],  
     },
     // imagenServicio: {
     //     type: String,
