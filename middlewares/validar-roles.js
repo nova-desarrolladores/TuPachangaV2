@@ -3,7 +3,7 @@ const { response } = require("express")
 
 const esAdminRol = (req, res =response, next) => {
 
-    if( ! req.usuario){
+    if( !req.usuario ){
 
         return res.status(500).json({
             msg:'se quiere verificar el rol sin el token '
