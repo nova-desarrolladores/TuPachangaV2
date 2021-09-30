@@ -50,7 +50,7 @@ const rutas = Router();
         check('rol').custom(esUnRolValido),
         // Validaciones de campos del formulario tomando el fichero de la carpeta middleware
         validarCampos
-      ],postUsuario);
+      ],postUsuario)
 
     // Obtener ruta para eliminar datos del usuario
     rutas.delete('/:id',[
