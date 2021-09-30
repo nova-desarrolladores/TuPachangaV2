@@ -4,6 +4,7 @@ en verdad existen en la base de datos.
 
 const Role = require('../models/rol');
 const Usuario = require('../models/usuario');
+const Servicio = require('../models/servicio');
 
 // Verificar si el rol de usaurio existe en la base de datos
 const esUnRolValido = async( rol = '') =>{
@@ -31,10 +32,19 @@ const existeUsuarioPorId = async(id ='') => {
             throw new Error (`Este id: ${id} no existe`);
         }
 }
+// Verificar si el servicio existe por id contra la base de datos
+const existeServicioPorId = async(id ='') => {
+
+    const existeServicioPorId = await Servicio.findById(id);
+        if (!existeServicioPorId){ 
+            throw new Error (`Este id: ${id} no existe`);
+        }
+}
 
 // Exportaciones de las funciones
 module.exports = {
     esUnRolValido,
     existeEmail,
-    existeUsuarioPorId
+    existeUsuarioPorId,
+    existeServicioPorId
 }

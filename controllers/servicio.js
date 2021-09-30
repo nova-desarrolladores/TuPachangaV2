@@ -18,10 +18,14 @@ const getServicio = async (req = request, res = response) => {
 // Funcion PUT para actualizar datos del servicio enviados por HTTP
 const putServicio = async(req = request, res = response) => {
     
-    const {id} = req.params;
+    const { id } = req.params;
+    const { _id, ...resto } = req.body;
+
+    const servicio = await Servicio.findByIdAndUpdate(id, resto);
+
     res.json({
         msg: 'put servicio',
-        id    
+        servicio    
          
     });
 }
@@ -30,13 +34,30 @@ const putServicio = async(req = request, res = response) => {
 const postServicio = async(req = request, res = response) => {    
 
     //const {nombre} = req.body;
-    const body = req.body;
-    const servicio = new Servicio (body);
+    const { 
+        nombreServicio,
+        descripcion,
+        tipoServicio,
+        galeriaImagen,
+        estadoServicio,
+        fechaPublicacion,
+        precio
+    } = req.body;
+    
+    const servicio = new Servicio ({
+        nombreServicio,
+        descripcion,
+        tipoServicio,
+        galeriaImagen,
+        estadoServicio,
+        fechaPublicacion,
+        precio
+    });
 
     await servicio.save();
 
     res.json({
-        msg: 'post servicio',
+        //msg: 'post servicio',
         servicio
          
     });

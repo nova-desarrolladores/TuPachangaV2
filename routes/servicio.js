@@ -2,13 +2,13 @@
 // Fichero para manejar las rutas de la pagina principal
 
 const {Router}  = require('express');
-//const { check } = require('express-validator');
+const { check } = require('express-validator');
 
 
 // Importacion de funciones para las validacion de los datos desde middleware
-//const { validarCampos } = require('../middlewares/validar-campos');
+const { validarCampos } = require('../middlewares/validar-campos');
 // Importacion de los metodos validaciones desde db-validator/ helpers
-//const { esUnRolValido, existeEmail, existeUsuarioPorId } = require('../helpers/db-validators');
+const { existeServicioPorId } = require('../helpers/db-validators');
 
 
 // Importacion de metodos HTTP desde servicio controllers
@@ -26,7 +26,11 @@ const rutasServicio = Router();
     rutasServicio.get('/', getServicio);
 
     // Obtener ruta para actualizar datos del servicio 
-    rutasServicio.put('/:id',putServicio);
+    rutasServicio.put('/:id',[
+        check('id','No es un id valido').isMongoId(),
+        check('id').custom(existeServicioPorId),
+        validarCampos
+    ],putServicio);
 
     // Obtener ruta para enviar datos del servicio
     rutasServicio.post('/', postServicio);
