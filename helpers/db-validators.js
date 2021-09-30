@@ -1,9 +1,11 @@
-/* El archivo db-validators.js verifica si los usuarios
-en verdad existen en la base de datos.
+/* El archivo db-validators.js verifica si 
+los datos de las colecciones
+en verdad existan en la base de datos.
 */
 
 const Role = require('../models/rol');
 const Usuario = require('../models/usuario');
+const Categoria =  require('../models/categoria');
 const Servicio = require('../models/servicio');
 
 // Verificar si el rol de usaurio existe en la base de datos
@@ -32,7 +34,16 @@ const existeUsuarioPorId = async(id ='') => {
             throw new Error (`Este id: ${id} no existe`);
         }
 }
-// Verificar si el servicio existe por id contra la base de datos
+
+
+const existeCategoriaPorId = async(id) => {
+    
+    const existeCategoria = await Categoria.findById(id);
+        if (!existeCategoria){ 
+            throw new Error (`Este id: ${id} no existe`);
+        }
+}
+
 const existeServicioPorId = async(id ='') => {
 
     const existeServicioPorId = await Servicio.findById(id);
@@ -46,5 +57,7 @@ module.exports = {
     esUnRolValido,
     existeEmail,
     existeUsuarioPorId,
-    existeServicioPorId
+    existeCategoriaPorId,
+  existeServicioPorId
+
 }
