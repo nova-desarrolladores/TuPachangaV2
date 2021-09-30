@@ -68,9 +68,15 @@ const postServicio = async(req = request, res = response) => {
 
 // Funciones para eliminar servivios por HTTP
 const deleteServicio = async(req = request, res = response) => {
+
+    const { id } = req.params;
+    const { _id, ...resto } = req.body;
+    
+    const servicio = await Servicio.findByIdAndDelete(id);
    
     res.json({
-        msg: 'delete servicio',        
+        msg: 'delete servicio',  
+        servicio      
     });
 }
 

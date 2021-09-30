@@ -36,7 +36,11 @@ const rutasServicio = Router();
     rutasServicio.post('/', postServicio);
 
     // Obtener ruta para eliminar datos del servicio
-    rutasServicio.delete('/',deleteServicio);
+    rutasServicio.delete('/:id',[
+        check('id','No es un id valido').isMongoId(),
+        check('id').custom(existeServicioPorId),
+        validarCampos
+    ],deleteServicio);
 
 // Exportacion de Router
 module.exports = rutasServicio;
