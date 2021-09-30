@@ -6,11 +6,14 @@ const Servicio = require('../models/servicio');
 // Funcion GET para obtener el servicio por HTTP
 const getServicio = async (req = request, res = response) => {    
 
+    const servicios = await Servicio.find();
+
     const {name} = req.query;
 
     res.json({
-        msg: 'get servicio',
-        name
+        //msg: 'get servicio',
+        servicios
+        
         
     });
 }
