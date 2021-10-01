@@ -1,0 +1,358 @@
+.proportions-box-square {
+    position: relative;
+    padding: 100% 0 0 !important;
+    height: 0;
+}
+
+.proportions-box-content {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
+.background-cover {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.background-left-top {
+    background-position: left top;
+}
+
+.background-left-center {
+    background-position: left center;
+}
+
+.background-left-bottom {
+    background-position: left bottom;
+}
+
+.background-right-top {
+    background-position: right top;
+}
+
+.background-right-center {
+    background-position: right center;
+}
+
+.background-right-bottom {
+    background-position: right bottom;
+}
+
+.background-center-top {
+    background-position: center top;
+}
+
+.background-center-center {
+    background-position: center center;
+}
+
+.background-center-bottom {
+    background-position: center bottom;
+}
+
+.border-width-1 {
+    border-width: 1px !important;
+}
+
+.border-width-2 {
+    border-width: 2px !important;
+}
+
+.border-width-3 {
+    border-width: 3px !important;
+}
+
+.border-width-4 {
+    border-width: 4px !important;
+}
+
+.border-width-6 {
+    border-width: 6px !important;
+}
+
+.border-width-8 {
+    border-width: 8px !important;
+}
+
+.border-width-12 {
+    border-width: 12px !important;
+}
+
+.border-width-16 {
+    border-width: 16px !important;
+}
+
+.border-width-24 {
+    border-width: 24px !important;
+}
+
+.image-fit {
+    object-fit: contain;
+    object-position: center center;
+}
+
+.image-fit-left-top {
+    object-position: left top;
+}
+
+.image-fit-left-center {
+    object-position: left center;
+}
+
+.image-fit-left-bottom {
+    object-position: left bottom;
+}
+
+.image-fit-right-top {
+    object-position: right top;
+}
+
+.image-fit-right-center {
+    object-position: right center;
+}
+
+.image-fit-right-bottom {
+    object-position: right bottom;
+}
+
+.image-fit-center-top {
+    object-position: center top;
+}
+
+.image-fit-center-center {
+    object-position: center center;
+}
+
+.image-fit-center-bottom {
+    object-position: center bottom;
+}
+
+.transition {
+    transition: all 0.25s ease-in;
+}
+
+.transition-slow {
+    transition: all 0.5s ease-in;
+}
+
+.transition-very-slow {
+    transition: all 1s ease-in;
+}
+
+.line-height-1 {
+    line-height: 1 !important;
+}
+
+.opacity-100 {
+    opacity: 1 !important;
+}
+
+.opacity-85 {
+    opacity: 0.85 !important;
+}
+
+.opacity-75 {
+    opacity: 0.75 !important;
+}
+
+.opacity-50 {
+    opacity: 0.50 !important;
+}
+
+.opacity-25 {
+    opacity: 0.25 !important;
+}
+
+.opacity-0 {
+    opacity: 0 !important;
+}
+
+.centro-grande-cortada {
+    object-fit: cover;
+    /* keep aspect ratio */
+    width: 100%;
+    max-height: 240px;
+}
+
+.centro-grande-cortada_larga {
+    object-fit: cover;
+    /* keep aspect ratio */
+    width: 100%;
+    max-height: 600px;
+}
+
+.centro-chica {
+    width: 100px;
+    min-height: 240px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+
+/* Vue project additions */
+
+
+/* Dropdown Menu */
+
+.dropdown__menu {
+    top: 100%;
+    right: 0;
+    position: absolute;
+    z-index: 10;
+    height: 25rem;
+    min-width: 300px;
+    margin-top: 1rem;
+    overflow-y: auto;
+    padding: 2rem 1rem 2rem 0rem;
+    border-radius: 12px;
+    background-color: white;
+    border: 1px solid var(--color-gray);
+    background-clip: padding-box;
+}
+
+.dropdown__menu-link {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.6);
+    padding: 0.8rem 0 0.8rem 2rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+    border-radius: 0 50px 50px 0;
+}
+
+.dropdown__menu-link:hover {
+    color: #17bf63;
+    background-color: rgba(79, 192, 141, 0.1);
+}
+
+.dropdown__menu-svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.dropdown__menu-text {
+    font-weight: 300;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+
+/* Animation Menu Icon */
+
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+    transition: all 0.6s;
+}
+
+.slide-fade-enter,
+.slide-fade-leave-active {
+    opacity: 0;
+}
+
+.slide-fade-enter {
+    transform: translateX(31px);
+}
+
+.slide-fade-leave-active {
+    transform: translateX(-31px);
+}
+
+
+/* Dropdown Menu Animation */
+
+.dropdown-enter-active,
+.dropdown-leave-active {
+    transition: all 1s;
+}
+
+.dropdown-enter,
+.dropdown-leave-to {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+
+/* vue-form-wizard */
+
+
+/* This is a css loader. It's not related to vue-form-wizard */
+
+.loader,
+.loader:after {
+    border-radius: 50%;
+    width: 10em;
+    height: 10em;
+}
+
+.loader {
+    margin: 60px auto;
+    font-size: 10px;
+    position: relative;
+    text-indent: -9999em;
+    border-top: 1.1em solid rgba(255, 255, 255, 0.2);
+    border-right: 1.1em solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
+    border-left: 1.1em solid #e74c3c;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: load8 1.1s infinite linear;
+    animation: load8 1.1s infinite linear;
+}
+
+@-webkit-keyframes load8 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes load8 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+pre {
+    overflow: auto;
+}
+
+pre .string {
+    color: #885800;
+}
+
+pre .number {
+    color: blue;
+}
+
+pre .boolean {
+    color: magenta;
+}
+
+pre .null {
+    color: red;
+}
+
+pre .key {
+    color: green;
+}
+
+
+/* vue-form-wizard */
