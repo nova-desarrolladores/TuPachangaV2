@@ -16,3 +16,9 @@ npm run dev
 ``````````````
 
 
+# Algunas indicaciones
+***********************************
+Directorios: 
+    - components: cada una de las secciones de las que se compone cada página
+    - pages: composición y otros de cada página ("fun" es para pruebas y experimentos)
+    - static: contenido no dinámico (imágenes, css, js...)
