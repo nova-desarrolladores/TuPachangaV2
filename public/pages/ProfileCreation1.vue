@@ -15,7 +15,7 @@
   import 'vue-form-generator/dist/vfg-core.css'; 
   import 'vue-form-wizard/dist/vue-form-wizard.min.css';
 
-import ProfileCreation1 from '../components/ProfileCreation1.vue';
+import ProfileCreation2 from '../components/ProfileCreation4.vue';
 
   Vue.use(VueFormWizard);
   
@@ -27,7 +27,7 @@ export default {
 
   name: 'Tupachanga',
   components: {
-    ProfileCreation1,    
+    ProfileCreation2,    
   }
 }
 </script>
@@ -36,7 +36,7 @@ export default {
 <template>
     <div> 
 
-  <ProfileCreation1 />
+  <ProfileCreation2 />
 
     </div>
 </template>
