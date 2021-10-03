@@ -1,8 +1,3 @@
-methods: {
-  onComplete: function(){
-      alert('Yay. Done!');
-   }
-  }
 
 <template>
   <div class="d-md-flex h-md-100 align-items-center">
@@ -29,17 +24,7 @@ methods: {
     <div class="col-md-6 p-0 bg-white h-md-100 loginarea">
       <div class="d-md-flex align-items-center h-md-100 p-5 justify-content-center" >
         
-<form-wizard>
-  <tab-content title="Personal details">
-    My first tab content
-  </tab-content>
-  <tab-content title="Additional Info">
-      My second tab content
-   </tab-content>
-   <tab-content title="Last step">
-     Yuhuuu! This seems pretty damn simple
-   </tab-content>
-</form-wizard>
+
 
         <!-- etc' -->
       </div>
