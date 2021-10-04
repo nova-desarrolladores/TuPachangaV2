@@ -8,7 +8,7 @@ const { check } = require('express-validator');
 // Importacion de funciones para las validacion de los datos desde middleware
 const { validarCampos } = require('../middlewares/validar-campos');
 // Importacion de los metodos validaciones desde db-validator/ helpers
-const { existeCalificaionPorId } = require('../helpers/db-validators');
+const { existeCalificacionPorId } = require('../helpers/db-validators');
 
 
 // Importacion de metodos HTTP desde servicio controllers

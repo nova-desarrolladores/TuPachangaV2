@@ -8,6 +8,7 @@ const Usuario = require('../models/usuario');
 const Categoria =  require('../models/categoria');
 const Servicio = require('../models/servicio');
 const Reserva = require('../models/reserva');
+const Calificacion = require('../models/calificacion');
 
 
 // Verificar si el rol de usaurio existe en la base de datos
@@ -71,6 +72,14 @@ const existeRolPorId = async(id ='') => {
         }
 }
 
+const existeCalificacionPorId = async(id ='') => {
+
+    const existeCalificacionPorId = await Calificacion.findById(id);
+        if (!existeCalificacionPorId){ 
+            throw new Error (`Este id: ${id} no existe`);
+        }
+}
+
 
 
 // Exportaciones de las funciones
@@ -80,7 +89,8 @@ module.exports = {
     existeUsuarioPorId,
     existeCategoriaPorId,
     existeServicioPorId,
-    existeReservaPorId
+    existeReservaPorId,
     existeRolPorId,
+    existeCalificacionPorId,
 
 }
