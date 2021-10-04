@@ -46,6 +46,8 @@ validarJWT,
 esAdminRol,
 check('nombre', 'El nombre es obligatorio').not().isEmpty(),
 validarCampos,
+check('id','No es un id valido').isMongoId(),
+validarCampos,
 check('id').custom(existeCategoriaPorId),
 validarCampos
 ],actualizarCategoria);

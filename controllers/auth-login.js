@@ -50,7 +50,7 @@ const loginUsuario = async(req = request, res = response) => {
         } catch (error) {
             console.log(error);
             res.status(500).json({
-                msg: 'Algo salio mal comuniquese son el administrador'
+                msg: 'Algo salio mal comuniquese con el administrador'
             })
         }
         

@@ -9,6 +9,7 @@ const Categoria =  require('../models/categoria');
 const Servicio = require('../models/servicio');
 const Reserva = require('../models/reserva');
 
+
 // Verificar si el rol de usaurio existe en la base de datos
 const esUnRolValido = async( rol = '') =>{
            
@@ -36,7 +37,7 @@ const existeUsuarioPorId = async(id ='') => {
         }
 }
 
-
+// Verificar si la categoria existe por id contra la base de datos
 const existeCategoriaPorId = async(id) => {
     
     const existeCategoria = await Categoria.findById(id);
@@ -45,6 +46,7 @@ const existeCategoriaPorId = async(id) => {
         }
 }
 
+// Verificar si el servicio existe por id contra la base de datos
 const existeServicioPorId = async(id ='') => {
 
     const existeServicioPorId = await Servicio.findById(id);
@@ -60,6 +62,17 @@ const existeReservaPorId = async(id ='') => {
         }
 }
 
+// Verificar si el rol existe por id contra la base de datos
+const existeRolPorId = async(id ='') => {
+
+    const RolPorId = await Role.findById(id);
+        if (!RolPorId){ 
+            throw new Error (`Este id: ${id} no existe`);
+        }
+}
+
+
+
 // Exportaciones de las funciones
 module.exports = {
     esUnRolValido,
@@ -68,5 +81,6 @@ module.exports = {
     existeCategoriaPorId,
     existeServicioPorId,
     existeReservaPorId
+    existeRolPorId,
 
 }
