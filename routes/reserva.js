@@ -8,7 +8,7 @@ const { check } = require('express-validator');
 // Importacion de funciones para las validacion de los datos desde middleware
 const { validarCampos } = require('../middlewares/validar-campos');
 // Importacion de los metodos validaciones desde db-validator/ helpers
-const { existeServicioPorId } = require('../helpers/db-validators');
+const { existeReservaPorId } = require('../helpers/db-validators');
 
 
 // Importacion de metodos HTTP desde servicio controllers
@@ -17,7 +17,7 @@ const {
     putReserva,
     postReserva,
     deleteReserva,
-} = require('../controllers/servicio')
+} = require('../controllers/reserva')
 
 // Inicializando la constante para fijar las rutas
 const rutasReserva = Router();

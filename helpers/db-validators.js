@@ -7,6 +7,7 @@ const Role = require('../models/rol');
 const Usuario = require('../models/usuario');
 const Categoria =  require('../models/categoria');
 const Servicio = require('../models/servicio');
+const Reserva = require('../models/reserva');
 
 // Verificar si el rol de usaurio existe en la base de datos
 const esUnRolValido = async( rol = '') =>{
@@ -51,6 +52,13 @@ const existeServicioPorId = async(id ='') => {
             throw new Error (`Este id: ${id} no existe`);
         }
 }
+const existeReservaPorId = async(id ='') => {
+
+    const existeReservaPorId = await Reserva.findById(id);
+        if (!existeReservaPorId){ 
+            throw new Error (`Este id: ${id} no existe`);
+        }
+}
 
 // Exportaciones de las funciones
 module.exports = {
@@ -58,6 +66,7 @@ module.exports = {
     existeEmail,
     existeUsuarioPorId,
     existeCategoriaPorId,
-  existeServicioPorId
+    existeServicioPorId,
+    existeReservaPorId
 
 }

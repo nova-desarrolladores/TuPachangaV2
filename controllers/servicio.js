@@ -27,7 +27,7 @@ const putServicio = async(req = request, res = response) => {
     const servicio = await Servicio.findByIdAndUpdate(id, resto);
 
     res.json({
-        msg: 'put servicio',
+        //msg: 'put servicio',
         servicio    
          
     });
@@ -75,7 +75,7 @@ const deleteServicio = async(req = request, res = response) => {
     const servicio = await Servicio.findByIdAndDelete(id);
    
     res.json({
-        msg: 'delete servicio',  
+        //msg: 'delete servicio',  
         servicio      
     });
 }
