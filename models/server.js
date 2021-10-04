@@ -20,6 +20,7 @@ class Server {
         this.rutaCategoria = '/api/categoria';
         this.rutaServicio = '/api/servicio';
         this.rutaReserva = '/api/reserva';
+        this.rutaCalificacion = '/api/calificacion';
 
         
 
@@ -61,6 +62,7 @@ class Server {
         this.app.use(this.rutaCategoria, require('../routes/categoria'));
         this.app.use(this.rutaServicio, require('../routes/servicio'));
         this.app.use(this.rutaReserva, require('../routes/reserva'));
+        this.app.use(this.rutaCalificacion, require('../routes/calificacion'));
         
 
     }
