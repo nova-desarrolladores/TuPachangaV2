@@ -6,13 +6,13 @@ const Calificacion = require('../models/calificacion');
 // Funcion GET para obtener el Calificacion por HTTP
 const getCalificacion = async (req = request, res = response) => {    
 
-     //const calificacion = await Calificacion.find();
+     const calificacion = await Calificacion.find();
 
      //const {comentario} = req.query;
 
     res.json({
         msg: 'get calificacion',
-        //calificacion
+        calificacion
         
         
     });
@@ -21,14 +21,14 @@ const getCalificacion = async (req = request, res = response) => {
 // Funcion PUT para actualizar datos del calificacion enviados por HTTP
 const putCalificacion = async(req = request, res = response) => {
     
-    //const { id } = req.params;
-   // const { _id, ...resto } = req.body;
+     const { id } = req.params;
+     const { _id, ...resto } = req.body;
 
-    //const calificacion = await Calificacion.findByIdAndUpdate(id, resto);
+    const calificacion = await Calificacion.findByIdAndUpdate(id, resto);
 
     res.json({
         msg: 'put calificacion',
-        //calificacion    
+        calificacion    
          
     });
 }
@@ -37,21 +37,29 @@ const putCalificacion = async(req = request, res = response) => {
 const postCalificacion = async(req = request, res = response) => {    
 
     //const {nombre} = req.body;
-    // const { 
-    //     comentario,
+    const { 
+        usuario,
+        categoria,
+        comentario,
+        puntuacion,
+        fechaCalificacion,
         
-    // } = req.body;
+    } = req.body;
     
-    // const calificacion = new Calificacion ({
-    //     numReserva,
+    const calificacion = new Calificacion ({
+        usuario,
+        categoria,
+        comentario,
+        puntuacion,
+        fechaCalificacion,
         
-    // });
+    });
 
-    // await calificacion.save();
+    await calificacion.save();
 
     res.json({
         msg: 'post calificacion',
-       // calificacion
+        calificacion
          
     });
 }
@@ -59,14 +67,14 @@ const postCalificacion = async(req = request, res = response) => {
 // Funciones para eliminar calificacion por HTTP
 const deleteCalificacion = async(req = request, res = response) => {
 
-    // const { id } = req.params;
-    // const { _id, ...resto } = req.body;
+    const { id } = req.params;
+    //const { _id, ...resto } = req.body;
     
-    // const calificacion = await Calificacion.findByIdAndDelete(id);
+    const calificacion = await Calificacion.findByIdAndDelete(id);
    
     res.json({
         msg: 'delete calificacion',  
-        //calificacion      
+        calificacion      
     });
 }
 
