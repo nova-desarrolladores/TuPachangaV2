@@ -3,9 +3,10 @@
 const {Schema, model} = require('mongoose');
 
 const ServicioSchema = Schema({
-    nombreServicio: {
+    nombre: {
         type: String,
         required: [true, 'El nombre del servicio es obligatorio'],
+        unique: true
     },
     descripcion: {
         type: String,
@@ -13,18 +14,24 @@ const ServicioSchema = Schema({
     },
     categoria: {
         type: Schema.Types.ObjectId,
-        ref:'Categoria'
-        //required: [true, 'La categoria de servicio es obligatorio'],  
+        ref:'Categoria',
+        required: true
     },
+    usuario: {
+        type: Schema.Types.ObjectId,
+        ref: 'Usuario',
+        required: true,
+    }, 
     imagenServicio: {
         type: String,
     },
     galeriaImagen: {
-        type: [String],
+        type: String,
     },
-    estadoServicio:{
+    estado:{
         type: Boolean,
-        default: true
+        default: true,
+        required: true
     },
     fechaPublicacion: {
         type: Date,
@@ -32,17 +39,17 @@ const ServicioSchema = Schema({
     }, 
     precio: {
         type: Number,
-        required: [true, 'El precio del servicio es obligatorio'],
-
-    },    
+        default: 0
+    },
+      
 });
 
 
-// Metodos para sobre escribir metodos
-// UsuarioSchema.methods.toJSON = function (){
-//     const {password, __v, ...usuario} = this.toObject();
-//     return usuario;
-// }
+//Metodos para sobre escribir metodos
+ServicioSchema.methods.toJSON = function (){
+    const {estado, __v, ...datos} = this.toObject();
+    return datos;
+}
 
 // Exportar el modelo (<nombre coleccion>, <esquema creado>)
 module.exports = model('Servicio', ServicioSchema);

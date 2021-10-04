@@ -5,7 +5,7 @@ const bcryptjs = require('bcryptjs');
 // Importar modelo del esquema usuario (DB)
 const Usuario = require('../models/usuario');
 
-// Funcion GET para obtener el usuario enviados por HTTP
+// Funcion GET para obtener el usuario enviados por HTTP - Paginado
 const getUsuario = async (req = request, res = response) => {
 
     // Obtener Usuarios Activos

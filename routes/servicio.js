@@ -1,46 +1,73 @@
+const { Router } = require('express');
+const {check}    = require('express-validator');
 
-// Fichero para manejar las rutas de la pagina principal
+// Importacion de los helpers
+const { existeServicioPorId, 
+        existeCategoriaPorId, 
+        existeUsuarioPorId, } = require('../helpers/db-validators');
 
-const {Router}  = require('express');
-const { check } = require('express-validator');
+// Importacion de los middlewares
+const { validarJWT }      = require('../middlewares/validar-jwt');
+const { validarCampos }   = require('../middlewares/validar-campos');
+const { esProveedorRol, esAdminRol }      = require('../middlewares/validar-roles');
+
+// Importacion de los controladores
+const { getServicios,
+        getUnServicio, 
+        putServicio,
+        postServicio,
+        deleteServicio} = require('../controllers/servicio');
 
 
-// Importacion de funciones para las validacion de los datos desde middleware
-const { validarCampos } = require('../middlewares/validar-campos');
-// Importacion de los metodos validaciones desde db-validator/ helpers
-const { existeServicioPorId } = require('../helpers/db-validators');
+const rutas = Router()
+
+// Obtener todas las categorias - Publico
+rutas.get('/', getServicios );
+
+// Obtener una categoria en particular por "id" - Publico
+rutas.get('/:id',[
+    validarJWT,
+    check('id', 'No es un id valido').isMongoId(),
+    validarCampos,
+    check('id').custom(existeServicioPorId),
+    validarCampos,
+], getUnServicio);
 
 
-// Importacion de metodos HTTP desde servicio controllers
-const { 
-    getServicio,
-    putServicio,
-    postServicio,
-    deleteServicio,
-} = require('../controllers/servicio')
+// Crear una categoria - Administrador con token valido
+rutas.post('/:id', [
+    validarJWT,
+    esProveedorRol,
+    check('id', 'No es un id valido').isMongoId(),
+    check('id').custom(existeUsuarioPorId),
+    check('nombre', 'El nombre del servicio es obligatorio').not().isEmpty(),
+    check('descripcion', 'La descripcion es obligatoria').not().isEmpty(),
+    check('precio'),
+    check('categoria','No es un id valido').isMongoId(),
+    check('categoria').custom(existeCategoriaPorId),
+    validarCampos,
+], postServicio);
 
-// Inicializando la constante para fijar las rutas
-const rutasServicio = Router();
+// Actualizar una categoria por "id" - Administrador con token id
+rutas.put('/:id',[
+validarJWT,
+esProveedorRol,
+check('id','No es un id valido').isMongoId(),
+check('id').custom(existeServicioPorId),
+check('nombre', 'El nombre es obligatorio').not().isEmpty(),
+check('descripcion', 'La descripcion es obligatoria').not().isEmpty(),
+check('precio'),
+validarCampos
+],putServicio);
 
-    // Obtener ruta para datos del servicio
-    rutasServicio.get('/', getServicio);
+// Borrar una categoria - Administrador
+rutas.delete('/:id',[
+    validarJWT,
+    esAdminRol,
+    check('id', 'Ese id no es valido').isMongoId(),
+    validarCampos,
+    check('id').custom(existeServicioPorId),
+    validarCampos
+], deleteServicio);
 
-    // Obtener ruta para actualizar datos del servicio 
-    rutasServicio.put('/:id',[
-        check('id','No es un id valido').isMongoId(),
-        check('id').custom(existeServicioPorId),
-        validarCampos
-    ],putServicio);
-
-    // Obtener ruta para enviar datos del servicio
-    rutasServicio.post('/', postServicio);
-
-    // Obtener ruta para eliminar datos del servicio
-    rutasServicio.delete('/:id',[
-        check('id','No es un id valido').isMongoId(),
-        check('id').custom(existeServicioPorId),
-        validarCampos
-    ],deleteServicio);
-
-// Exportacion de Router
-module.exports = rutasServicio;
+module.exports = rutas;

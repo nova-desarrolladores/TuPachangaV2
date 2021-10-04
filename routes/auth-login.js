@@ -10,7 +10,7 @@ const rutas = Router();
 
 rutas.post('/login',[
     check('correo', 'Ingrese un correo valido').isEmail(),
-    check('password', 'El password no es correcto').not().isEmpty(),
+    check('password', 'No se esta enviando un password').not().isEmpty(),
     validarCampos 
 ], loginUsuario);
 
