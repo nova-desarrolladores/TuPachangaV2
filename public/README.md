@@ -7,6 +7,10 @@
 1. Clonar
 2. Ir al directorio "public"
 3. Construir el proyecto en local
+4. 
+``````````````
+npm install
+``````````````
 ``````````````
 npm run build
 ``````````````
