@@ -2,7 +2,6 @@ const {response, request} = require('express');
 
 // Importar modelo del esquema usuario (DB)
 const Servicio = require('../models/servicio');
-const Role = require('../models/rol');
 
 
 // Obtener todos los servicios - paginado - total de servicios - populate
@@ -12,7 +11,7 @@ const getServicios = async (req, res = response) => {
     // Obtener Servicios Activos
     const [mostrarServiciosActivos, totalServiciosActivos] = await Promise.all([
         //Obtener Categorias de la base de datos
-        Servicio.find({estado: true })
+        Servicio.find({estado: true }).sort('-_id')
                                     .populate('usuario', ['nombre','rol'])
                                     .populate('categoria', 'nombre'),
                                                            
@@ -40,13 +39,13 @@ const getServicios = async (req, res = response) => {
 // Obtener una solo servicio - pupulate {<regresa el objeto del servicio>}
 const getUnServicio = async (req, res = response) => {
     const {id} = req.params;
-    const unServicio = await Servicio.findById(id)
+    const servicioPorID = await Servicio.findById(id)
                             .populate('usuario', ['nombre','rol'] )
                             .populate('categoria', 'nombre');
                             // .populate('usuario', 'rol');
 
     res.json({
-        unServicio
+        servicioPorID
     })
 }
 

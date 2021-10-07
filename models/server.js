@@ -15,9 +15,11 @@ class Server {
         
         // Rutas que tomara el metodo Routes
         this.pathAuthLogin = '/api/auth';
+        this.rutaBuscar    = '/api/buscar';
         this.rutaCategoria = '/api/categoria';
-        this.rutaServicio = '/api/servicio';
-        this.rutaUsuario = '/api/usuario';
+        this.rutaServicio  = '/api/servicio';
+        this.rutaUsuario   = '/api/usuario';
+        this.rutaInforme   = '/api/informe'
 
     /*Llamada de metodos de la clase Server */  
         // Metodo que conecta a la Base de datos
@@ -52,9 +54,11 @@ class Server {
         
         //Ruta cargar fichero de rutas del usuario
         this.app.use(this.pathAuthLogin, require('../routes/auth-login'));
+        this.app.use(this.rutaBuscar, require('../routes/buscar') );
         this.app.use(this.rutaCategoria, require('../routes/categoria'));
         this.app.use(this.rutaServicio, require('../routes/servicio'));
         this.app.use(this.rutaUsuario, require('../routes/usuario'));
+        this.app.use(this.rutaInforme, require('../routes/informe'));
     }
 
     // Metodo para verificar si el servidor funciona

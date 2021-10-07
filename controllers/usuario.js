@@ -11,7 +11,7 @@ const getUsuario = async (req = request, res = response) => {
     // Obtener Usuarios Activos
     const [mostrarUsuariosActivos, totalUsuariosActivos] = await Promise.all([
         //Obtener los usuarios de la base de datos
-        Usuario.find({estadoUsuario: true}),
+        Usuario.find({estadoUsuario: true}).sort('-_id'),
         // Obtener el total de usuarios en la base de datos
         Usuario.countDocuments({estadoUsuario: true})
     ]);
