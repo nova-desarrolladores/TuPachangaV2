@@ -14,12 +14,18 @@ class Server {
         this.port = process.env.PORT;
         
         // Rutas que tomara el metodo Routes
+       
         this.pathAuthLogin = '/api/auth';
         this.rutaBuscar    = '/api/buscar';
         this.rutaCategoria = '/api/categoria';
         this.rutaServicio  = '/api/servicio';
         this.rutaUsuario   = '/api/usuario';
-        this.rutaInforme   = '/api/informe'
+        this.rutaInforme   = '/api/informe';
+        this.rutaReserva = '/api/reserva';
+        this.rutaCalificacion = '/api/calificacion';
+
+        
+
 
     /*Llamada de metodos de la clase Server */  
         // Metodo que conecta a la Base de datos
@@ -59,6 +65,10 @@ class Server {
         this.app.use(this.rutaServicio, require('../routes/servicio'));
         this.app.use(this.rutaUsuario, require('../routes/usuario'));
         this.app.use(this.rutaInforme, require('../routes/informe'));
+        this.app.use(this.rutaReserva, require('../routes/reserva'));
+        this.app.use(this.rutaCalificacion, require('../routes/calificacion'));
+        
+
     }
 
     // Metodo para verificar si el servidor funciona
