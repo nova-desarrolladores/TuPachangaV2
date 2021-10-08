@@ -16,9 +16,11 @@ class Server {
         // Rutas que tomara el metodo Routes
        
         this.pathAuthLogin = '/api/auth';
-        this.rutaUsuario = '/api/usuario';
+        this.rutaBuscar    = '/api/buscar';
         this.rutaCategoria = '/api/categoria';
-        this.rutaServicio = '/api/servicio';
+        this.rutaServicio  = '/api/servicio';
+        this.rutaUsuario   = '/api/usuario';
+        this.rutaInforme   = '/api/informe';
         this.rutaReserva = '/api/reserva';
         this.rutaCalificacion = '/api/calificacion';
 
@@ -58,9 +60,11 @@ class Server {
         
         //Ruta cargar fichero de rutas del usuario
         this.app.use(this.pathAuthLogin, require('../routes/auth-login'));
-        this.app.use(this.rutaUsuario, require('../routes/usuario'));
+        this.app.use(this.rutaBuscar, require('../routes/buscar') );
         this.app.use(this.rutaCategoria, require('../routes/categoria'));
         this.app.use(this.rutaServicio, require('../routes/servicio'));
+        this.app.use(this.rutaUsuario, require('../routes/usuario'));
+        this.app.use(this.rutaInforme, require('../routes/informe'));
         this.app.use(this.rutaReserva, require('../routes/reserva'));
         this.app.use(this.rutaCalificacion, require('../routes/calificacion'));
         
