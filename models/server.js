@@ -1,25 +1,25 @@
 // Paquetes o librerias de terceros
 const express = require('express');
-const cors    = require('cors');
+const cors = require('cors');
 
 
 // Importacion  de la conexion a la base de datos
-const {dbConnection} = require('../database/config');
+const { dbConnection } = require('../database/config');
 
 class Server {
 
-    constructor(){
+    constructor() {
         // Inicializaciones de paquetes
         this.app = express();
         this.port = process.env.PORT;
-        
+
         // Rutas que tomara el metodo Routes
         this.pathAuthLogin = '/api/auth';
         this.rutaCategoria = '/api/categoria';
         this.rutaUsuario = '/api/usuario';
         this.rutaServicio = '/api/servicio';
 
-    /*Llamada de metodos de la clase Server */  
+        /*Llamada de metodos de la clase Server */
         // Metodo que conecta a la Base de datos
         this.conectarDB();
 
@@ -31,12 +31,12 @@ class Server {
     }
 
     // Metodo asincrono para conectar a DB
-    async conectarDB () {
+    async conectarDB() {
         await dbConnection();
     }
 
     // Metodo Middleware
-    middleware(){
+    middleware() {
         // CORS
         this.app.use(cors());
 
@@ -48,8 +48,8 @@ class Server {
     }
 
     // Metodo para configurar Rutas
-    routes(){
-        
+    routes() {
+
         //Ruta cargar fichero de rutas del usuario
         this.app.use(this.rutaUsuario, require('../routes/usuario'));
         this.app.use(this.pathAuthLogin, require('../routes/auth-login'));
@@ -58,8 +58,8 @@ class Server {
     }
 
     // Metodo para verificar si el servidor funciona
-    listen(){
-        this.app.listen(this.port, () =>{
+    listen() {
+        this.app.listen(this.port, () => {
             console.log('Servidor corriendo en', this.port);
         })
     }

@@ -1,6 +1,6 @@
 // Modelo o Esquema tabla usuarios para la base de datos
 
-const {Schema, model} = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 const UsuarioSchema = Schema({
     nombre: {
@@ -9,27 +9,27 @@ const UsuarioSchema = Schema({
     },
     apellidoPaterno: {
         type: String,
-        required: [true, 'El apellido paterno es obligatorio'],  
+        required: [true, 'El apellido paterno es obligatorio'],
     },
     apellidoMaterno: {
         type: String,
-        required: [true, 'El apellido materno es obligatorio'],  
+        required: [true, 'El apellido materno es obligatorio'],
     },
     direccion: {
         type: String,
-        required: [true, 'La direccion es obligatorio'],  
+        required: [true, 'La direccion es obligatorio'],
     },
     estado: {
         type: String,
-        required: [true, 'El estado es obligatorio'],  
+        required: [true, 'El estado es obligatorio'],
     },
     municipio: {
         type: String,
-        required: [true, 'El municipio es obligatorio'],  
+        required: [true, 'El municipio es obligatorio'],
     },
     telefono: {
         type: Number,
-        required: [true, 'El telefono es obligatorio'],  
+        required: [true, 'El telefono es obligatorio'],
     },
     rfc: {
         type: String,
@@ -38,21 +38,21 @@ const UsuarioSchema = Schema({
     correo: {
         type: String,
         required: [true, 'El correo es obligatorio'],
-        unique: true,  
+        unique: true,
     },
-    password:{
+    password: {
         type: String,
         required: [true, 'La contraseña es obligatorio'],
     },
     img: {
         type: String,
     },
-    rol:{
+    rol: {
         type: String,
         required: true,
-        enum: ['ADMIN','PROVEEDOR','CONSUMIDOR'],
+        enum: ['ADMIN', 'PROVEEDOR', 'CONSUMIDOR'],
     },
-    estadoUsuario:{
+    estadoUsuario: {
         type: Boolean,
         default: true
     },
@@ -60,8 +60,8 @@ const UsuarioSchema = Schema({
 
 
 // Metodos para sobre escribir metodos
-UsuarioSchema.methods.toJSON = function (){
-    const {password, __v, _id, ...usuario} = this.toObject();
+UsuarioSchema.methods.toJSON = function() {
+    const { nombre, __v, _id, ...usuario } = this.toObject();
     usuario.uid = _id;
     return usuario;
 }
